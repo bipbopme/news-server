@@ -12,8 +12,7 @@
     {
       "name": "Top Stories",
       "url": "https://apnews.com/",
-      "topic": "news",
-      "subtopic": "top"
+      "category": "16"
     }
   ]
 }

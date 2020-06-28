@@ -1,0 +1,26 @@
+extends ../layout.pug
+
+block content
+    each source in sources
+      .source
+        h2= source.name
+        .url
+          a(href=source.url)= source.url
+        dl
+          dt Reliability
+          dd= source.reliability
+          dt Bias
+          dd= source.bias
+          dt Alex Rank
+          dd= source.alexaRank
+        h3 Sections
+        table
+          tr
+            th Name
+            th URL
+            th Category ID
+          each section in source.sections
+            tr
+              td= section.name
+              td= section.url
+              td= section.category

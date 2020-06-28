@@ -21,11 +21,10 @@ function cacheSources() {
 }
 
 router.get("/", (req, res) => {
-  if (!existsSync(SOURCES_OUTPUT_PATH)) {
-    cacheSources();
-  }
-  
   res.sendFile(SOURCES_OUTPUT_PATH);
 });
+
+// Cache on each start
+cacheSources();
 
 export default router;
