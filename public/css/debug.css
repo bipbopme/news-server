@@ -1,3 +1,53 @@
 body {
   font-family: sans-serif;
+  padding: 20px;
+}
+
+dt, dd {
+  display: inline-block;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 8px 0 4px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+}
+
+td, th {
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 8px;
+}
+
+.source {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.source img {
+  float: left;
+  height: 128px;
+  padding-right: 10px;
+  width: 128px;
+}
+
+.source h3 {
+  margin: 0;
+}
+
+.source h4 {
+  clear: both;
+  padding-top: 15px;
 }

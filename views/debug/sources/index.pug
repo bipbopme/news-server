@@ -1,9 +1,12 @@
 extends ../layout.pug
 
 block content
+  h2 Sources
+  .sources
     each source in sources
       .source
-        h2= source.name
+        img(src=source.iconUrl)
+        h3= source.name
         .url
           a(href=source.url)= source.url
         .description
@@ -15,7 +18,7 @@ block content
           dd= source.bias
           dt Alex Rank
           dd= source.alexaRank
-        h3 Sections
+        h4 Sections
         table
           tr
             th Name
