@@ -6,6 +6,8 @@ block content
         h2= source.name
         .url
           a(href=source.url)= source.url
+        .description
+          = source.description
         dl
           dt Reliability
           dd= source.reliability
@@ -18,9 +20,9 @@ block content
           tr
             th Name
             th URL
-            th Category ID
+            th Category
           each section in source.sections
             tr
               td= section.name
               td= section.url
-              td= section.category
+              td #{categories[section.category]} (#{section.category})
