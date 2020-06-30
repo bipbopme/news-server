@@ -23,7 +23,7 @@ async function getLatestBatch() {
   return batches[0];
 }
 
-async function getLinks(batchID, categoryID, sourceID) {
+async function getLinks(batchID, categoryId, sourceID) {
   return search({
     index: "links",
     body: {
@@ -32,17 +32,17 @@ async function getLinks(batchID, categoryID, sourceID) {
           must: [
             {
               term: {
-                "batch_id.keyword": batchID,
+                "batchId.keyword": batchID,
               },
             },
             {
               term: {
-                "category_id.keyword": categoryID,
+                "categoryId.keyword": categoryId,
               },
             },
             {
               term: {
-                "source_id.keyword": sourceID,
+                "sourceId.keyword": sourceID,
               },
             },
           ],
@@ -58,17 +58,17 @@ router.get("/top", async (req, res) => {
   const sourceIDs = [
     "the-new-york-times",
     "ap-news",
-    "washington-post",
+    "newsmax",
     "fox-news",
   ];
-  const categoryID = "16";
+  const categoryId = "16";
   const batch = await getLatestBatch();
 
   const groupings = [];
 
   await Promise.all(
     sourceIDs.map(async (sourceID) => {
-      const links = await getLinks(batch.id, categoryID, sourceID);
+      const links = await getLinks(batch.id, categoryId, sourceID);
 
       links.forEach((l, i) => {
         groupings[i] = groupings[i] || [];
@@ -81,7 +81,7 @@ router.get("/top", async (req, res) => {
 
   groupings.forEach((c) => (articles = articles.concat(_.shuffle(c))));
 
-  res.json(articles);
+  res.json(batch);
 });
 
 export default router;

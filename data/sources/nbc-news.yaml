@@ -10,4 +10,4 @@ alexaRank: 646
 sections:
   - name: News
     url: https://www.nbcnews.com/
-    categoryID: "16"
+    categoryId: "16"

@@ -10,4 +10,4 @@ alexaRank: 126
 sections:
   - name: News
     url: https://www.theguardian.com/us
-    categoryID: "16"
+    categoryId: "16"

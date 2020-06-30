@@ -10,4 +10,4 @@ alexaRank: 81
 sections:
   - name: Home
     url: https://www.bbc.com/
-    categoryID: "16"
+    categoryId: "16"

@@ -22,10 +22,10 @@ block content
         table
           tr
             th Name
-            th URL
+            th Url
             th Category
           each section in source.sections
             tr
               td= section.name
               td= section.url
-              td #{categories[section.categoryID]} (#{section.categoryID})
+              td #{categories[section.categoryId]} (#{section.categoryId})

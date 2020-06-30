@@ -10,4 +10,4 @@ alexaRank: 23735
 sections:
   - name: Home
     url: https://www.csmonitor.com/
-    categoryID: "16"
+    categoryId: "16"

@@ -10,4 +10,4 @@ alexaRank: 181
 sections:
   - name: Home Page
     url: https://www.washingtonpost.com/
-    categoryID: "16"
+    categoryId: "16"
