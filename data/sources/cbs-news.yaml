@@ -1,0 +1,13 @@
+id: cbs-news
+name: CBS News
+description: CBS News is the news division of the Columbia Broadcasting System, owned by ViacomCBS. Founded in 1927, it is headquartered in New York City. Its most popular news programs are CBS Evening News, CBS This Morning, Face the Nation, 48 Hours and 60 Minutes. Its website has recorded more than 49 million visits. Ad Fontes Media rates CBS News as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.cbsnews.com/
+iconUrl: https://logo.clearbit.com/cbsnews.com
+reliabilityUrl: https://www.adfontesmedia.com/cbs-bias-and-reliability/
+reliability: 47.06
+bias: -1.85
+alexaRank: 1340
+sections:
+  - name: Breaking News
+    url: https://www.cbsnews.com/
+    categoryID: "16"

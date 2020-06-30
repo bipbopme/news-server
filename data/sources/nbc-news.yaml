@@ -1,0 +1,13 @@
+id: nbc-news
+name: NBC News
+description: NBC News is the news division of the National Broadcasting Company, part of NBCUniversal, owned by Comcast Corporation. Founded in 1940, it is headquartered in New York City. Its most popular news programs are Today, NBC Nightly News, Dateline and Meet the Press. Its website was launched in 1996 and has recorded more than 99 million visits. Ad Fontes Media rates NBC News as skews left in terms of bias and as most reliable in terms of reliability.
+url: https://www.nbcnews.com/
+iconUrl: https://logo.clearbit.com/nbcnews.com
+reliabilityUrl: https://www.adfontesmedia.com/nbc-bias-and-reliability/
+reliability: 46.39
+bias: -6.11
+alexaRank: 646
+sections:
+  - name: News
+    url: https://www.nbcnews.com/
+    categoryID: "16"

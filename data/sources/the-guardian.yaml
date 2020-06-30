@@ -1,0 +1,13 @@
+id: the-guardian
+name: The Guardian
+description: The Guardian is a British news website begun as a print newspaper in 1821. The print edition, published in London, is read by more than 125,000 daily. The online newspaper was launched in 1999 and reaches approximately 114 million monthly in the U.S. The website is owned by the Guardian Media Group. Ad Fontes Media rates The Guardian as skews left in terms of bias and as most reliable in terms of reliability.
+url: https://www.theguardian.com/us
+iconUrl: https://logo.clearbit.com/theguardian.com
+reliabilityUrl: https://www.adfontesmedia.com/the-guardian-bias-and-reliability/
+reliability: 47.66
+bias: -6.45
+alexaRank: 126
+sections:
+  - name: News
+    url: https://www.theguardian.com/us
+    categoryID: "16"

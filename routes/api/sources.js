@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, writeFileSync } from "fs";
 
 import express from "express";
 import path from "path";
+import yaml from "js-yaml";
 
 const router = express.Router();
 const __dirname = path.resolve();
@@ -13,8 +14,10 @@ function cacheSources() {
   const filenames = readdirSync(dirname);
 
   filenames.forEach(function (filename) {
-    const content = readFileSync(dirname + filename, "utf-8");
-    sources.push(JSON.parse(content));
+    if (filename.endsWith(".yaml")) {
+      const content = readFileSync(dirname + filename, "utf-8");
+      sources.push(yaml.safeLoad(content));
+    }
   });
 
   writeFileSync(SOURCES_OUTPUT_PATH, JSON.stringify(sources, null, 2), "utf8");

@@ -1,0 +1,13 @@
+id: abc-news
+name: ABC News
+description: ABC News is the news division of the American Broadcasting Company, part of Walt Disney Television. Founded in 1945, it is headquartered in New York City. Its most popular news programs are Good Morning America, ABC World News Tonight, 20/20 and Nightline. Its website, abcnews.go.com, has recorded more than 62.5 million visits. Ad Fontes Media rates ABC News as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://abcnews.go.com/
+iconUrl: https://s.abcnews.com/assets/images/apple-touch-icons/touch-icon-ipad-retina.png
+reliabilityUrl: https://www.adfontesmedia.com/abc-news-bias-and-reliability/
+reliability: 49.47
+bias: -1.85
+alexaRank: 1158
+sections:
+  - name: Home
+    url: https://abcnews.go.com/
+    categoryID: "16"

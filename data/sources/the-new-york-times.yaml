@@ -1,0 +1,16 @@
+id: the-new-york-times
+name: The New York Times
+description: The New York Times is a daily newspaper based in New York City. Founded in 1851, the paper has won 130 Pulitzer Prizes, more than any other media. The Times has a print circulation of 840,000 and a total of 6 million subscribers, including its digital product. Ad Fontes Media rates the New York Times as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.nytimes.com/
+iconUrl: https://www.nytimes.com/vi-assets/static-assets/apple-touch-icon-319373aaf4524d94d38aa599c56b8655.png
+reliabilityUrl: https://www.adfontesmedia.com/new-york-times-bias-and-reliability/
+reliability: 47.5
+bias: -4.01
+alexaRank: 86
+sections:
+  - name: Home Page
+    url: https://www.nytimes.com/
+    categoryID: "16"
+  - name: Sports
+    url: https://www.nytimes.com/section/sports
+    categoryID: "24"

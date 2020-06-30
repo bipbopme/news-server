@@ -1,0 +1,13 @@
+id: reuters
+name: Reuters
+description: Reuters is an international news organization published in 16 languages and viewed by billions worldwide every day. The news agency was founded in 1851 by Paul Reuter and is now owned by Thomson Reuters. The organization is headquartered in London. Ad Fontes Media rates Reuters as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.reuters.com/
+iconUrl: https://logo.clearbit.com/reuters.com
+reliabilityUrl: https://www.adfontesmedia.com/reuters-bias-and-reliability/
+reliability: 51.64
+bias: -0.95
+alexaRank: 432
+sections:
+  - name: Home
+    url: https://www.reuters.com/
+    categoryID: "16"

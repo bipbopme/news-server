@@ -1,0 +1,13 @@
+id: newsmax
+name: Newsmax
+description: Newsmax is a conservative news and opinion website founded in 1998. The site is owned by Newsmax Media, which also publishes a magazine and broadcasts a cable news channel. The site states that Newsmax reaches 25 million Americans each month through its various platforms. Ad Fontes Media rates Newsmax as skews right in terms of bias and as mixed reliability in terms of reliability.
+url: https://www.newsmax.com/
+iconUrl: https://logo.clearbit.com/newsmax.com
+reliabilityUrl: https://www.adfontesmedia.com/newsmax-bias-and-reliability/
+reliability: 33.15
+bias: 13.61
+alexaRank: 6213
+sections:
+  - name: Home
+    url: https://www.newsmax.com/
+    categoryID: "16"

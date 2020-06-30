@@ -1,0 +1,13 @@
+id: bbc
+name: BBC
+description: BBC (British Broadcasting Company) is a public broadcasting service based in London. It publishes news on television, radio and online in more than 40 languages. Established in 1922 by a royal charter, the BBC is primarily funded by a license fee paid by households in the United Kingdom. Ad Fontes Media rates BBC as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.bbc.com/
+iconUrl: https://logo.clearbit.com/bbc.com
+reliabilityUrl: https://www.adfontesmedia.com/bbc-bias-and-reliability/
+reliability: 46.56
+bias: -3.03
+alexaRank: 81
+sections:
+  - name: Home
+    url: https://www.bbc.com/
+    categoryID: "16"

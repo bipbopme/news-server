@@ -1,0 +1,13 @@
+id: cnn
+name: CNN
+description: CNN.com (Cable News Network) posts news and information online 24 hours a day, seven days a week from bureaus throughout the world. It’s the digital partner to the cable news channel with the same name. Begun in 1980, CNN is part of Warner Media, a subsidiary of AT&T. Ad Fontes Media rates the CNN.com as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.cnn.com/
+iconUrl: https://logo.clearbit.com/cnn.com
+reliabilityUrl: https://www.adfontesmedia.com/cnncom-bias-and-reliability/
+reliability: 42.22
+bias: -5.69
+alexaRank: 79
+sections:
+  - name: Home Page
+    url: https://www.cnn.com/
+    categoryID: "16"

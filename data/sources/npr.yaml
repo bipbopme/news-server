@@ -1,0 +1,13 @@
+id: npr
+name: NPR
+description: NPR (National Public Radio) is an independent, nonprofit media organization that reaches 52 million people each week through its radio stations, website, social media, podcasts and other formats. NPR was created by an act of Congress and is based in Washington, D.C., with 35 bureaus worldwide. Ad Fontes Media rates NPR as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.npr.org/
+iconUrl: https://logo.clearbit.com/npr.org
+reliabilityUrl: https://www.adfontesmedia.com/npr-bias-and-reliability/
+reliability: 49.90
+bias: -2.73
+alexaRank: 546
+sections:
+  - name: News
+    url: https://www.npr.org/sections/news/
+    categoryID: "16"

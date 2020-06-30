@@ -1,0 +1,13 @@
+id: usa-today
+name: USA Today
+description: USA Today is an international media organization with headquarters in McLean, Virginia, and Geneva, Switzerland. The flagship of Gannett Co., Inc., the USA Today print edition reaches more than 700,000 worldwide, with more than half a million digital subscribers. USA Today has won 93 Pultizer Prizes and many other journalism accolades. Ad Fontes Media rates USA Today as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.usatoday.com/
+iconUrl: https://logo.clearbit.com/usatoday.com
+reliabilityUrl: https://www.adfontesmedia.com/usa-today-bias-and-reliability/
+reliability: 46.07
+bias: -2.03
+alexaRank: 479
+sections:
+  - name: Home
+    url: https://www.usatoday.com/
+    categoryID: "16"

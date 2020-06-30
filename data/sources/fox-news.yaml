@@ -1,0 +1,13 @@
+id: fox-news
+name: Fox News
+description: FoxNews.com posts news and information online 24 hours a day, seven days a week. It’s the digital partner to the cable news channel with the same name. Founded in 1996, Fox News is owned by Fox News Media, part of the Fox Corporation created by Rupert Murdoch. Ad Fontes Media rates the FoxNews.com as skews right in terms of bias and as mixed reliability in terms of reliability.
+url: https://www.foxnews.com/
+iconUrl: https://logo.clearbit.com/foxnews.com
+reliabilityUrl: https://www.adfontesmedia.com/fox-news-com-bias-and-reliability/
+reliability: 26.75
+bias: 15.31
+alexaRank: 249
+sections:
+  - name: Home Page
+    url: https://www.foxnews.com/
+    categoryID: "16"

@@ -1,0 +1,13 @@
+id: washington-times
+name: Washington Times
+description: The Washington Times is a daily newspaper published in Washington, D.C. Established in 1982, it has a daily circulation of 52,000 and its website records more than 10 million visits per month. The newspaper was founded by Unification movement leader Sun Myung Moon and is now owned by Operations Holdings Inc. Ad Fontes Media rates The Washington TImes as skews right in terms of bias and as mixed reliability in terms of reliability.
+url: https://www.washingtontimes.com/
+iconUrl: https://logo.clearbit.com/washingtontimes.com
+reliabilityUrl: https://www.adfontesmedia.com/washington-times-bias-and-reliability/
+reliability: 31.34
+bias: 12.97
+alexaRank: 6713
+sections:
+  - name: Home
+    url: https://www.washingtontimes.com/
+    categoryID: "16"

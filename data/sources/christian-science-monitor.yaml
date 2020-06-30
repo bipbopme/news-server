@@ -1,0 +1,13 @@
+id: christian-science-monitor
+name: Christian Science Monitor
+description: The Christian Science Monitor (CSM), commonly known as The Monitor, is a nonprofit news organization that publishes daily articles in electronic format as well as a weekly print edition. It was founded in 1908 as a daily newspaper by Mary Baker Eddy, the founder of the Church of Christ, Scientist.
+url: https://www.csmonitor.com/
+iconUrl: https://logo.clearbit.com/csmonitor.com
+reliabilityUrl: https://www.adfontesmedia.com/christian-science-monitor-bias-and-reliability/
+reliability: 44.47
+bias: -0.21
+alexaRank: 23735
+sections:
+  - name: Home
+    url: https://www.csmonitor.com/
+    categoryID: "16"
