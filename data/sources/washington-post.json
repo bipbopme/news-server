@@ -1,0 +1,18 @@
+{
+  "id": "washington-post",
+  "name": "Washington Post",
+  "description": "The Washington Post is a daily newspaper based in Washington, D.C., that specializes in national politics. Founded in 1877, the paper has won 69 Pulitzer Prizes. The Post website was launched in 1996. Since 2013, the Post has been owned by Nash Holdings, led by Amazon CEO Jeff Bezos. Ad Fontes Media rates The Washington Post as neutral/balanced in terms of bias and as most reliable in terms of reliability.",
+  "url": "https://www.washingtonpost.com/",
+  "iconUrl": "https://logo.clearbit.com/washingtonpost.com",
+  "reliabilityUrl": "https://www.adfontesmedia.com/washington-post-bias-and-reliability/",
+  "reliability": 43.73,
+  "bias": -4.18,
+  "alexaRank": 181,
+  "sections": [
+    {
+      "name": "Home Page",
+      "url": "https://www.washingtonpost.com/",
+      "categoryID": "16"
+    }
+  ]
+}

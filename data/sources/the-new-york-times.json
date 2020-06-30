@@ -12,12 +12,12 @@
     {
       "name": "Home Page",
       "url": "https://www.nytimes.com/",
-      "category": "16"
+      "categoryID": "16"
     },
     {
       "name": "Sports",
       "url": "https://www.nytimes.com/section/sports",
-      "category": "24"
+      "categoryID": "24"
     }
   ]
 }

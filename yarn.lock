@@ -21,6 +21,17 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@elastic/elasticsearch@^7.8.0":
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/@elastic/elasticsearch/-/elasticsearch-7.8.0.tgz#3f9ee54fe8ef79874ebd231db03825fa500a7111"
+  integrity sha512-rUOTNN1At0KoN0Fcjd6+J7efghuURnoMTB/od9EMK6Mcdebi6N3z5ulShTsKRn6OanS9Eq3l/OmheQY1Y+WLcg==
+  dependencies:
+    debug "^4.1.1"
+    decompress-response "^4.2.0"
+    ms "^2.1.1"
+    pump "^3.0.0"
+    secure-json-parse "^2.1.0"
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -314,12 +325,26 @@ debug@^3.2.6:
   dependencies:
     ms "^2.1.1"
 
+debug@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
+  integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
+  dependencies:
+    ms "^2.1.1"
+
 decompress-response@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/decompress-response/-/decompress-response-3.3.0.tgz#80a4dd323748384bfa248083622aedec982adff3"
   integrity sha1-gKTdMjdIOEv6JICDYirt7Jgq3/M=
   dependencies:
     mimic-response "^1.0.0"
+
+decompress-response@^4.2.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/decompress-response/-/decompress-response-4.2.1.tgz#414023cc7a302da25ce2ec82d0d5238ccafd8986"
+  integrity sha512-jOSne2qbyE+/r8G1VU+G/82LBs2Fs4LAsTiLSHOCOMZQl2OKZ6i8i4IyHemTe+/yIXOtTcRQMzPcgyhoFlqPkw==
+  dependencies:
+    mimic-response "^2.0.0"
 
 deep-extend@^0.6.0:
   version "0.6.0"
@@ -744,7 +769,7 @@ latest-version@^5.0.0:
   dependencies:
     package-json "^6.3.0"
 
-lodash@^4.17.13:
+lodash@^4.17.13, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -802,6 +827,11 @@ mimic-response@^1.0.0, mimic-response@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
+
+mimic-response@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-2.1.0.tgz#d13763d35f613d09ec37ebb30bac0469c0ee8f43"
+  integrity sha512-wXqjST+SLt7R009ySCglWBCFpjUygmCIfD790/kVbiGmUgfYGuB14PiTd5DwVxSV4NcYHjzMkoj5LjQZwTQLEA==
 
 minimatch@^3.0.4:
   version "3.0.4"
@@ -1144,6 +1174,11 @@ safe-buffer@5.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+
+secure-json-parse@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/secure-json-parse/-/secure-json-parse-2.1.0.tgz#ae76f5624256b5c497af887090a5d9e156c9fb20"
+  integrity sha512-GckO+MS/wT4UogDyoI/H/S1L0MCcKS1XX/vp48wfmU7Nw4woBmb8mIpu4zPBQjKlRT88/bt9xdoV4111jPpNJA==
 
 semver-diff@^3.1.1:
   version "3.1.1"

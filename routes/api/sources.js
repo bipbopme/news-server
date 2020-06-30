@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "fs";
+import { readFileSync, readdirSync, writeFileSync } from "fs";
 
 import express from "express";
 import path from "path";
