@@ -1,73 +1,21 @@
-import _ from "lodash";
-import elasticsearch from "@elastic/elasticsearch";
-import express from "express";
+import { getArticlesByIds, getLatestBatch, getLinks } from "../../db.js";
 
-const es = new elasticsearch.Client({ node: "http://localhost:9200" });
+import _ from "lodash";
+import express from "express";
+import luxon from "luxon";
+
+const { DateTime } = luxon;
 const router = express.Router();
 
-async function search(doc) {
-  const { body } = await es.search(doc);
-  return body.hits.hits.map((h) => h._source);
-}
+router.get("/", async (req, res) => {
+  const sourceIds = (req.query.sourceIds || "").split(",");
+  const categoryId = req.query.categoryId || "16";
 
-async function getLatestBatch() {
-  const batches = await search({
-    index: "batches",
-    body: {
-      query: { match_all: {} },
-      sort: { started_at: "desc" },
-      size: 1,
-    },
-  });
-
-  return batches[0];
-}
-
-async function getLinks(batchID, categoryId, sourceID) {
-  return search({
-    index: "links",
-    body: {
-      query: {
-        bool: {
-          must: [
-            {
-              term: {
-                "batchId.keyword": batchID,
-              },
-            },
-            {
-              term: {
-                "categoryId.keyword": categoryId,
-              },
-            },
-            {
-              term: {
-                "sourceId.keyword": sourceID,
-              },
-            },
-          ],
-        },
-      },
-      sort: { position: "asc" },
-      size: 10,
-    },
-  });
-}
-
-router.get("/top", async (req, res) => {
-  const sourceIDs = [
-    "the-new-york-times",
-    "ap-news",
-    "newsmax",
-    "fox-news",
-  ];
-  const categoryId = "16";
   const batch = await getLatestBatch();
-
   const groupings = [];
 
   await Promise.all(
-    sourceIDs.map(async (sourceID) => {
+    sourceIds.map(async (sourceID) => {
       const links = await getLinks(batch.id, categoryId, sourceID);
 
       links.forEach((l, i) => {
@@ -77,11 +25,17 @@ router.get("/top", async (req, res) => {
     })
   );
 
-  let articles = [];
+  let orderedArticleIds = [];
+  groupings.forEach((g) => {
+    g.sort((a, b) => DateTime.fromISO(a) - DateTime.fromISO(b)).forEach((l) =>
+      orderedArticleIds.push(l.articleId)
+    );
+  });
 
-  groupings.forEach((c) => (articles = articles.concat(_.shuffle(c))));
+  const articlesMap = await getArticlesByIds(orderedArticleIds);
+  const orderedArticles = orderedArticleIds.map((id) => articlesMap[id]);
 
-  res.json(batch);
+  res.json(orderedArticles);
 });
 
 export default router;

@@ -10,6 +10,8 @@ const app = express();
 const port = 5500;
 
 app.set("view engine", "pug");
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use("/api/sources", sourcesRouter);
 app.use("/api/articles", articlesRouter);
