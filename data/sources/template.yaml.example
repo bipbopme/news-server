@@ -1,0 +1,47 @@
+id:
+name:
+description:
+url:
+iconUrl: https://logo.clearbit.com/sitename.com
+reliabilityUrl: https://www.adfontesmedia.com/...
+reliability:
+bias:
+alexaRank:
+country: us
+sections:
+  - name: News
+    categoryId: 1
+    url:
+  - name: Politics
+    categoryId: 2
+    url:
+  - name: Health
+    categoryId: 3
+    url:
+  - name: Business
+    categoryId: 4
+    url:
+  - name: Sports
+    categoryId: 5
+    url:
+  - name: Science
+    categoryId: 6
+    url:
+  - name: Technology
+    categoryId: 7
+    url:
+  - name: Style
+    categoryId: 8
+    url:
+  - name: Entertainment
+    categoryId: 9
+    url:
+  - name: Travel
+    categoryId: 10
+    url:
+  - name: Food
+    categoryId: 11
+    url:
+  - name: Opinion
+    categoryId: 12
+    url:

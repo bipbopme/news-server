@@ -7,10 +7,41 @@ reliabilityUrl: https://www.adfontesmedia.com/new-york-times-bias-and-reliabilit
 reliability: 47.5
 bias: -4.01
 alexaRank: 86
+country: us
 sections:
-  - name: Home Page
+  - name: Home
+    categoryId: 1
     url: https://www.nytimes.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://www.nytimes.com/section/politics
+  - name: Health
+    categoryId: 3
+    url: https://www.nytimes.com/section/health
+  - name: Business
+    categoryId: 4
+    url: https://www.nytimes.com/section/business
   - name: Sports
+    categoryId: 5
     url: https://www.nytimes.com/section/sports
-    categoryId: "24"
+  - name: Science
+    categoryId: 6
+    url: https://www.nytimes.com/section/science
+  - name: Technology
+    categoryId: 7
+    url: https://www.nytimes.com/section/technology
+  - name: Style
+    categoryId: 8
+    url: https://www.nytimes.com/section/style
+  - name: Entertainment
+    categoryId: 9
+    url: https://www.nytimes.com/section/t-magazine/entertainment
+  - name: Travel
+    categoryId: 10
+    url: https://www.nytimes.com/section/travel
+  - name: Food
+    categoryId: 11
+    url: https://www.nytimes.com/section/food
+  - name: Opinion
+    categoryId: 12
+    url: https://www.nytimes.com/section/opinion

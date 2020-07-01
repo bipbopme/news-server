@@ -7,7 +7,8 @@ reliabilityUrl: https://www.adfontesmedia.com/reuters-bias-and-reliability/
 reliability: 51.64
 bias: -0.95
 alexaRank: 432
+country: us
 sections:
   - name: Home
     url: https://www.reuters.com/
-    categoryId: "16"
+    categoryId: 1

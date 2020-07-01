@@ -7,7 +7,8 @@ reliabilityUrl: https://www.adfontesmedia.com/usa-today-bias-and-reliability/
 reliability: 46.07
 bias: -2.03
 alexaRank: 479
+country: us
 sections:
   - name: Home
     url: https://www.usatoday.com/
-    categoryId: "16"
+    categoryId: 1

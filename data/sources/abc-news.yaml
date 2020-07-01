@@ -7,7 +7,26 @@ reliabilityUrl: https://www.adfontesmedia.com/abc-news-bias-and-reliability/
 reliability: 49.47
 bias: -1.85
 alexaRank: 1158
+country: us
 sections:
   - name: Home
+    categoryId: 1
     url: https://abcnews.go.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://abcnews.go.com/Politics
+  - name: Health
+    categoryId: 3
+    url: https://abcnews.go.com/Health
+  - name: Business
+    categoryId: 4
+    url: https://abcnews.go.com/Business
+  - name: Sports
+    categoryId: 5
+    url: https://abcnews.go.com/Sports
+  - name: Technology
+    categoryId: 7
+    url: https://abcnews.go.com/Technology
+  - name: Entertainment
+    categoryId: 9
+    url: https://abcnews.go.com/Entertainment

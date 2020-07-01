@@ -7,7 +7,31 @@ reliabilityUrl: https://www.adfontesmedia.com/cbs-bias-and-reliability/
 reliability: 47.06
 bias: -1.85
 alexaRank: 1340
+country: us
 sections:
-  - name: Breaking News
+  - name: Home
+    categoryId: 1
     url: https://www.cbsnews.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://www.cbsnews.com/politics/
+  - name: Health
+    categoryId: 3
+    url: https://www.cbsnews.com/health/
+  - name: Business
+    categoryId: 4
+    url: https://www.cbsnews.com/moneywatch/
+  - name: Sports
+    categoryId: 5
+    url: http://www.cbssports.com/
+  - name: Science
+    categoryId: 6
+    url: https://www.cbsnews.com/science/
+  - name: Technology
+    categoryId: 7
+    url: https://www.cbsnews.com/technology/
+  - name: Entertainment
+    categoryId: 9
+    url: https://www.cbsnews.com/entertainment/
+
+    

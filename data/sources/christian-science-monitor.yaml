@@ -7,7 +7,29 @@ reliabilityUrl: https://www.adfontesmedia.com/christian-science-monitor-bias-and
 reliability: 44.47
 bias: -0.21
 alexaRank: 23735
+country: us
 sections:
-  - name: Home
+  - name: News
+    categoryId: 1
     url: https://www.csmonitor.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://www.csmonitor.com/USA/Politics
+  - name: Business
+    categoryId: 4
+    url: https://www.csmonitor.com/Business
+  - name: Science
+    categoryId: 6
+    url: https://www.csmonitor.com/Science
+  - name: Technology
+    categoryId: 7
+    url: https://www.csmonitor.com/Technology
+  - name: Culture
+    categoryId: 9
+    url: https://www.csmonitor.com/The-Culture
+  - name: Food
+    categoryId: 11
+    url: https://www.csmonitor.com/The-Culture/Food
+  - name: Opinion
+    categoryId: 12
+    url: https://www.csmonitor.com/Commentary

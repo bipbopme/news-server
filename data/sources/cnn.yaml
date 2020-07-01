@@ -7,7 +7,30 @@ reliabilityUrl: https://www.adfontesmedia.com/cnncom-bias-and-reliability/
 reliability: 42.22
 bias: -5.69
 alexaRank: 79
+country: us
 sections:
-  - name: Home Page
+  - name: Home
+    categoryId: 1
     url: https://www.cnn.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://www.cnn.com/politics
+  - name: Health
+    categoryId: 3
+    url: https://www.cnn.com/health
+  - name: Business
+    categoryId: 4
+    url: https://www.cnn.com/business
+  - name: Style
+    categoryId: 8
+    url: https://www.cnn.com/style
+  - name: Entertainment
+    categoryId: 9
+    url: https://www.cnn.com/entertainment
+  - name: Travel
+    categoryId: 10
+    url: https://www.cnn.com/travel
+  - name: Opinion
+    categoryId: 12
+    url: https://www.cnn.com/opinions
+    

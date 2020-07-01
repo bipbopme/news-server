@@ -8,7 +8,8 @@ reliability: 33.15
 bias: 13.61
 alexaRank: 6213
 useDesktop: true
+country: us
 sections:
   - name: Home
     url: https://www.newsmax.com/
-    categoryId: "16"
+    categoryId: 1

@@ -7,7 +7,8 @@ reliabilityUrl: https://www.adfontesmedia.com/washington-times-bias-and-reliabil
 reliability: 31.34
 bias: 12.97
 alexaRank: 6713
+country: us
 sections:
   - name: Home
     url: https://www.washingtontimes.com/
-    categoryId: "16"
+    categoryId: 1

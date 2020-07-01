@@ -8,7 +8,32 @@ reliability: 51.98
 bias: -1.06
 alexaRank: 1680
 customUrlPattern: apnews.com/[a-z0-9] 
+country: us
 sections:
   - name: Top Stories
+    categoryId: 1
     url: https://apnews.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://apnews.com/apf-politics
+  - name: Health
+    categoryId: 3
+    url: https://apnews.com/apf-Health
+  - name: Business
+    categoryId: 4
+    url: https://apnews.com/apf-business
+  - name: Sports
+    categoryId: 5
+    url: https://apnews.com/apf-sports
+  - name: Science
+    categoryId: 6
+    url: https://apnews.com/apf-science
+  - name: Technology
+    categoryId: 7
+    url: https://apnews.com/apf-technology
+  - name: Entertainment
+    categoryId: 9
+    url: https://apnews.com/apf-entertainment
+  - name: Travel
+    categoryId: 10
+    url: https://apnews.com/apf-Travel

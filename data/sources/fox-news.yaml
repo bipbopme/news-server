@@ -7,7 +7,35 @@ reliabilityUrl: https://www.adfontesmedia.com/fox-news-com-bias-and-reliability/
 reliability: 26.75
 bias: 15.31
 alexaRank: 249
+country: us
 sections:
-  - name: Home Page
+  - name: Home
+    categoryId: 1
     url: https://www.foxnews.com/
-    categoryId: "16"
+  - name: Politics
+    categoryId: 2
+    url: https://www.foxnews.com/politics
+  - name: Health
+    categoryId: 3
+    url: https://www.foxnews.com/health
+  - name: Science
+    categoryId: 6
+    url: https://www.foxnews.com/science
+  - name: Tech
+    categoryId: 7
+    url: https://www.foxnews.com/tech
+  - name: Style + Beauty
+    categoryId: 8
+    url: https://www.foxnews.com/category/style-and-beauty
+  - name: Entertainment
+    categoryId: 9
+    url: https://www.foxnews.com/entertainment
+  - name: Travel + Outdoors
+    categoryId: 10
+    url: https://www.foxnews.com/travel
+  - name: Food + Drink
+    categoryId: 11
+    url: https://www.foxnews.com/food-drink
+  - name: Opinion
+    categoryId: 12
+    url: https://www.foxnews.com/opinion

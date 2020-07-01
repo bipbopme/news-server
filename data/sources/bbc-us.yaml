@@ -1,0 +1,35 @@
+id: bbc-us
+name: BBC
+description: BBC (British Broadcasting Company) is a public broadcasting service based in London. It publishes news on television, radio and online in more than 40 languages. Established in 1922 by a royal charter, the BBC is primarily funded by a license fee paid by households in the United Kingdom. Ad Fontes Media rates BBC as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.bbc.com/
+iconUrl: https://logo.clearbit.com/bbc.com
+reliabilityUrl: https://www.adfontesmedia.com/bbc-bias-and-reliability/
+reliability: 46.56
+bias: -3.03
+alexaRank: 81
+country: us
+sections:
+  - name: News
+    categoryId: 1
+    url: https://www.bbc.com/news
+  - name: Health
+    categoryId: 3
+    url: https://www.bbc.com/news/health
+  - name: Business
+    categoryId: 4
+    url: https://www.bbc.com/news/business
+  - name: Sports
+    categoryId: 5
+    url: https://www.bbc.com/sport
+  - name: Science
+    categoryId: 6
+    url: https://www.bbc.com/news/science_and_environment
+  - name: Technology
+    categoryId: 7
+    url: https://www.bbc.com/news/technology
+  - name: Entertainment
+    categoryId: 9
+    url: https://www.bbc.com/news/entertainment_and_arts
+  - name: Travel
+    categoryId: 10
+    url: http://www.bbc.com/travel

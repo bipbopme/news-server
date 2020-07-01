@@ -7,7 +7,8 @@ reliabilityUrl: https://www.adfontesmedia.com/npr-bias-and-reliability/
 reliability: 49.90
 bias: -2.73
 alexaRank: 546
+country: us
 sections:
   - name: News
     url: https://www.npr.org/sections/news/
-    categoryId: "16"
+    categoryId: 1

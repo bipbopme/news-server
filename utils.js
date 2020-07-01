@@ -6,12 +6,6 @@ export function initCache() {
   }
 }
 
-export async function getCategoriesMap() {
-  const taxonomy = JSON.parse(await fs.promises.readFile("data/taxonomy.json"));
-
-  let map = {};
-
-  taxonomy.forEach(c => map = { ...map, ...c });
-
-  return map;
+export async function getCategories() {
+  return JSON.parse(await fs.promises.readFile("data/taxonomy.json"));
 }
