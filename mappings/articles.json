@@ -1,0 +1,18 @@
+{
+  "mappings": {
+    "properties": {
+      "text": {
+        "type": "text",
+        "analyzer": "english",
+        "term_vector": "yes",
+        "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } }
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "english",
+        "term_vector": "yes",
+        "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } }
+      }
+    }
+  }
+}

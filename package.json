@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "map": "curl -X PUT -H 'Content-Type: application/json' --data '@./mappings/articles.json' http://localhost:9200/articles"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.8.0",
