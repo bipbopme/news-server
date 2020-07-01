@@ -1,7 +1,10 @@
-import { getArticlesByIds, getLatestBatch, getLinks } from "../../db.js";
+import { getArticlesByIds, getLinks } from "../../db.js";
 
 import _ from "lodash";
+import articlesDb from "../../db/articles.js";
+import batchesDb from "../../db/batches.js";
 import express from "express";
+import linksDb from "../../db/links.js";
 import luxon from "luxon";
 
 const { DateTime } = luxon;
@@ -9,14 +12,14 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const sourceIds = (req.query.sourceIds || "").split(",");
-  const categoryId = req.query.categoryId || "16";
+  const categoryId = req.query.categoryId || 1;
 
-  const batch = await getLatestBatch();
+  const batch = await batchesDb.getLatest();
   const groupings = [];
 
   await Promise.all(
-    sourceIds.map(async (sourceID) => {
-      const links = await getLinks(batch.id, categoryId, sourceID);
+    sourceIds.map(async (sourceId) => {
+      const links = await linksDb.getByBatchId(batch.id, categoryId, sourceId);
 
       links.forEach((l, i) => {
         groupings[i] = groupings[i] || [];
@@ -32,10 +35,9 @@ router.get("/", async (req, res) => {
     );
   });
 
-  const articlesMap = await getArticlesByIds(orderedArticleIds);
-  const orderedArticles = orderedArticleIds.map((id) => articlesMap[id]);
+  const articles = await articlesDb.getByIds(orderedArticleIds);
 
-  res.json(orderedArticles);
+  res.json(articles);
 });
 
 export default router;
