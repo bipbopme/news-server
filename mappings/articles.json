@@ -1,17 +1,25 @@
 {
   "mappings": {
     "properties": {
-      "text": {
-        "type": "text",
-        "analyzer": "english",
-        "term_vector": "yes",
-        "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } }
-      },
       "title": {
         "type": "text",
         "analyzer": "english",
-        "term_vector": "yes",
         "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } }
+      },
+      "description": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } }
+      },
+      "text": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } }
+      },
+      "clusterText": {
+        "type": "text",
+        "analyzer": "english",
+        "term_vector": "yes"
       }
     }
   }
