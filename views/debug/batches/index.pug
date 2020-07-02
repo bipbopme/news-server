@@ -9,6 +9,7 @@ block content
       th Ended
       th Total Links
       th By Source
+      th Stats
     each batch in batches
       tr.batch
         td= batch.id
@@ -17,3 +18,5 @@ block content
         td= batch.link_count
         td
           pre= JSON.stringify(batch.link_count_by_source, null, 2)
+        td
+          pre= JSON.stringify(batch.stats, null, 2)
