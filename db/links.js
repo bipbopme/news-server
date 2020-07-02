@@ -31,11 +31,11 @@ async function getByBatchId(batchID, categoryId, sourceId, size = 10) {
   });
 }
 
-async function getGroupsBySourceIds(expandedSourceIds, batchId, categoryId, size = 10) {
+async function getGroupsBySourceIds(sourceIds, batchId, categoryId, size = 10) {
   const linkGroups = [];
 
   await Promise.all(
-    expandedSourceIds.map(async (sourceId) => {
+    sourceIds.map(async (sourceId) => {
       const links = await getByBatchId(batchId, categoryId, sourceId, size);
 
       links.forEach((l, i) => {

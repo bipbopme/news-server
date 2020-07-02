@@ -254,6 +254,11 @@ clone-response@^1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
+clusters@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/clusters/-/clusters-0.0.4.tgz#f6d603139788b1443415fee42fe1d4ececea8379"
+  integrity sha1-9tYDE5eIsUQ0Ff7kL+HU7Ozqg3k=
+
 color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
@@ -436,6 +441,15 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+
+express-promise-router@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/express-promise-router/-/express-promise-router-4.0.1.tgz#7ed65473a12208ec1065c1358c398175b89d425c"
+  integrity sha512-kqan6QuMV7FdfN9b2uYpaKEJnxzfj57voI4IsMjgug5mBc6/hjuvoUT76Z/pvRqID2isl/NygTUe8S2MH2trMg==
+  dependencies:
+    is-promise "^4.0.0"
+    lodash.flattendeep "^4.0.0"
+    methods "^1.0.0"
 
 express@^4.17.1:
   version "4.17.1"
@@ -724,6 +738,11 @@ is-promise@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.2.2.tgz#39ab959ccbf9a774cf079f7b40c7a26f763135f1"
   integrity sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==
 
+is-promise@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-4.0.0.tgz#42ff9f84206c1991d26debf520dd5c01042dd2f3"
+  integrity sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==
+
 is-regex@^1.0.3:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.0.tgz#ece38e389e490df0dc21caea2bd596f987f767ff"
@@ -782,12 +801,22 @@ keyv@^3.0.0:
   dependencies:
     json-buffer "3.0.0"
 
+kmpp@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/kmpp/-/kmpp-0.1.21.tgz#6049bbab7797cf36c63d22b76a941d3b2f11a628"
+  integrity sha512-kzUSVCNFvDru3HO+OPIhJ4d8xBqi4990nbE+ew7fyIhTB4TMHzlvbWucA1c52VogfyJj6BmZRMPx0Wb1tVJ4FA==
+
 latest-version@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-5.1.0.tgz#119dfe908fe38d15dfa43ecd13fa12ec8832face"
   integrity sha512-weT+r0kTkRQdCdYCNtkMwWXQTMEswKrFBkm4ckQOMVhhqhIMI1UT2hMj+1iigIhgSZm5gTmrRXBNoGUgaTY1xA==
   dependencies:
     package-json "^6.3.0"
+
+lodash.flattendeep@^4.0.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
+  integrity sha1-+wMJF/hqMTTlvJvsDWngAT3f7bI=
 
 lodash@^4.17.13, lodash@^4.17.15:
   version "4.17.15"
@@ -826,7 +855,7 @@ merge-descriptors@1.0.1:
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
 
-methods@~1.1.2:
+methods@^1.0.0, methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=

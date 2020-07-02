@@ -40,8 +40,6 @@ function getExpandedBiasSpread(sourcesMap, sourceIds, expandBy = 10) {
   const MAX_RIGHT_BIAS = 20;
   let { min, max } = getBiasSpread(sourcesMap, sourceIds);
 
-  console.log({ min, max });
-
   const padding = expandBy / 2;
   const paddedMin = min - padding >= MIN_LEFT_BIAS ? min - padding : min;
   const paddedMax = max + padding <= MAX_RIGHT_BIAS ? max + padding : max;
@@ -71,9 +69,6 @@ async function getRelatedIds(sourceIds, categoryId = 1, limit = 5, inclusive = t
   const { min, max } = getExpandedBiasSpread(sourcesMap, sourceIds);
   let relatedSources = [];
 
-  console.log(sourceIds);
-  console.log({ min, max });
-
   sources.forEach((source) => {
     if (!source.bias) return;
 
@@ -97,8 +92,6 @@ async function getRelatedIds(sourceIds, categoryId = 1, limit = 5, inclusive = t
 
   // Limit to the number provided
   relatedSourceIds = relatedSourceIds.slice(0, limit);
-
-  console.log(relatedSourceIds);
 
   return relatedSourceIds;
 }

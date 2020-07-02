@@ -1,60 +1,87 @@
+import PromiseRouter from "express-promise-router";
 import _ from "lodash";
 import articlesDb from "../../db/articles.js";
 import batchesDb from "../../db/batches.js";
-import express from "express";
+import clusterMaker from "clusters";
+import { getBagOfWords } from "../../utils.js";
 import linksDb from "../../db/links.js";
 import luxon from "luxon";
 import { mapTo } from "../../db/utils.js";
 import sourcesDb from "../../db/sources.js";
 
 const { DateTime } = luxon;
-const router = express.Router();
+const router = PromiseRouter();
 
-function clusterLinks(links) {
-  const clusters = [];
-  const hasBeenClustered = {};
+function prioritizeRequestedSources(linkGroups, sourceIds) {
+  return linkGroups.map((g) => {
+    return g.sort((a, b) => {
+      const aIsRequestSource = _.includes(sourceIds, a.sourceId);
+      const bIsRequestSource = _.includes(sourceIds, b.sourceId);
 
-  links.forEach((l) => {
-    if (hasBeenClustered[l.id]) return;
-    let cluster = [l];
-    hasBeenClustered[l.id] = true;
-
-    links.forEach((ll) => {
-      if (hasBeenClustered[ll.id]) return;
-      const intersection = _.intersection(l.terms, ll.terms);
-
-      if (intersection.length / l.terms.length >= 0.2) {
-        cluster.push(ll);
-        hasBeenClustered[ll.id] = true;
+      if (aIsRequestSource && bIsRequestSource) {
+        return 0;
+      } else if (aIsRequestSource) {
+        return -1;
+      } else {
+        return 1;
       }
     });
-
-    clusters.push(cluster);
   });
-
-  return clusters;
 }
 
-function pickArticlesFromClusters(linkClusters) {
+function getTopArticles(links, count = 5) {
+  const bow = getBagOfWords(links);
+
+  clusterMaker.k(count);
+  clusterMaker.iterations(500);
+  clusterMaker.data(bow);
+  const clusters = clusterMaker.clusters();
   const articles = [];
 
-  linkClusters.forEach((c) => {
-    c[0].article.position = c[0].position;
-    articles.push(c[0].article);
+  clusters.forEach((c) => {
+    console.log("-- cluster");
+
+    articles.push(links[bow.indexOf(c.points[0])].article);
+
+    c.points.forEach((p) => {
+      const point = links[bow.indexOf(p)];
+
+      console.debug(point.position, point.article.title);
+    });
   });
 
   return articles;
 }
 
 router.get("/", async (req, res) => {
-  const sourceIds = (req.query.sourceIds || "").split(",");
+  const sourceIds = (req.query.sourceIds || "ap-news").split(",");
+  const categoryId = req.query.categoryId ? parseInt(req.query.categoryId) : 1;
+
+  const batch = await batchesDb.getLatest();
+  const linkGroups = prioritizeRequestedSources(
+    await linksDb.getGroupsBySourceIds(sourceIds, batch.id, categoryId),
+    sourceIds
+  );
+
+  const links = _.flatten(linkGroups);
+  const articleIds = _.map(links, "articleId");
+  const articles = await articlesDb.getByIds(articleIds)
+
+  res.json(articles);
+});
+
+router.get("/top", async (req, res) => {
+  const sourceIds = (req.query.sourceIds || "ap-news").split(",");
   const categoryId = req.query.categoryId ? parseInt(req.query.categoryId) : 1;
 
   const batch = await batchesDb.getLatest();
   const expandedSourceIds = await sourcesDb.getRelatedIds(sourceIds);
-  const links = _.flatten(
-    await linksDb.getGroupsBySourceIds(expandedSourceIds, batch.id, categoryId)
+  const linkGroups = prioritizeRequestedSources(
+    await linksDb.getGroupsBySourceIds(expandedSourceIds, batch.id, categoryId),
+    sourceIds
   );
+
+  const links = _.flatten(linkGroups);
   const articleIds = _.map(links, "articleId");
 
   const termVectorsMap = mapTo(await articlesDb.getTermVectorsByIds(articleIds), "id");
@@ -65,10 +92,9 @@ router.get("/", async (req, res) => {
     l.article = articlesMap[l.articleId];
   });
 
-  const linkClusters = clusterLinks(links);
-  const articles = pickArticlesFromClusters(linkClusters);
+  const articles = getTopArticles(links);
 
-  res.json(articles);
+  res.json(links);
 });
 
 export default router;

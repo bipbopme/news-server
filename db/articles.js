@@ -41,17 +41,17 @@ async function getTermVectors(id) {
     index: "articles",
     id: id,
     body: {
-      fields: ["text"],
+      fields: ["clusterText"],
       positions: false,
       offsets: false,
       field_statistics: false,
       term_statistics: false,
       payloads: false,
-      filter: { min_term_freq: 2, min_word_length: 3, max_num_terms: 10 }
+      filter: { max_num_terms: 5 }
     }
   });
 
-  return Object.keys(body.term_vectors?.text?.terms || {});
+  return body.term_vectors?.clusterText?.terms;
 }
 
 async function getTermVectorsByIds(ids) {

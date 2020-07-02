@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.8.0",
+    "clusters": "^0.0.4",
     "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "js-yaml": "^3.14.0",
+    "kmpp": "^0.1.21",
     "lodash": "^4.17.15",
     "luxon": "^1.24.1",
     "pug": "^3.0.0"
