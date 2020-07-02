@@ -1,4 +1,5 @@
 import articlesRouter from "./routes/api/articles.js";
+import debugBatchesRouter from "./routes/debug/batches.js";
 import debugSourcesRouter from "./routes/debug/sources.js";
 import express from "express";
 import { initCache } from "./utils.js";
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use("/api/sources", sourcesRouter);
 app.use("/api/articles", articlesRouter);
 app.use("/debug/sources", debugSourcesRouter);
+app.use("/debug/batches", debugBatchesRouter);
 
 app.listen(port, () =>
   console.log(`App listening at http://localhost:${port}`)

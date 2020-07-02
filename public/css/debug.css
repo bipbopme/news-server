@@ -27,6 +27,7 @@ td, th {
   border: 1px solid #eee;
   margin: 0;
   padding: 8px;
+  vertical-align: top;
 }
 
 .source {

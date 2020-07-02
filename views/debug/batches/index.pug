@@ -1,0 +1,19 @@
+extends ../layout.pug
+
+block content
+  h2 Batches
+  table.batches
+    tr
+      th ID
+      th Started
+      th Ended
+      th Total Links
+      th By Source
+    each batch in batches
+      tr.batch
+        td= batch.id
+        td= batch.started_at
+        td= batch.ended_at
+        td= batch.link_count
+        td
+          pre= JSON.stringify(batch.link_count_by_source, null, 2)
