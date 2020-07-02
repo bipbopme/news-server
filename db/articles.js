@@ -1,4 +1,6 @@
+import elasticsearch from "@elastic/elasticsearch";
 import { search } from "./utils.js";
+const es = new elasticsearch.Client({ node: "http://localhost:9200" });
 
 export async function getByIds(ids, size = 1000) {
   const articles = await search({
@@ -27,11 +29,43 @@ export async function getByIds(ids, size = 1000) {
 
   let orderedArticles = [];
 
-  ids.forEach(id => {
+  ids.forEach((id) => {
     orderedArticles.push(articles.find((a) => a.id === id));
   });
 
   return orderedArticles;
 }
 
-export default { getByIds }
+async function getTermVectors(id) {
+  const { body } = await es.termvectors({
+    index: "articles",
+    id: id,
+    body: {
+      fields: ["text"],
+      positions: false,
+      offsets: false,
+      field_statistics: false,
+      term_statistics: false,
+      payloads: false,
+      filter: { min_term_freq: 2, min_word_length: 3, max_num_terms: 10 }
+    }
+  });
+
+  return Object.keys(body.term_vectors.text.terms);
+}
+
+async function getTermVectorsByIds(ids) {
+  const termVectors = [];
+
+  await Promise.all(
+    ids.map(async (id) => {
+      const terms = await getTermVectors(id); 
+
+      termVectors.push({ id, terms });
+    })
+  );
+
+  return termVectors;
+}
+
+export default { getByIds, getTermVectorsByIds };
