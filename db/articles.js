@@ -51,7 +51,7 @@ async function getTermVectors(id) {
     }
   });
 
-  return Object.keys(body.term_vectors.text.terms);
+  return Object.keys(body.term_vectors?.text?.terms || {});
 }
 
 async function getTermVectorsByIds(ids) {
