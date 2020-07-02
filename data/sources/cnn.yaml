@@ -30,7 +30,7 @@ sections:
   - name: Travel
     categoryId: 10
     url: https://www.cnn.com/travel
-  - name: Opinion
+  - name: Opinions
     categoryId: 12
     url: https://www.cnn.com/opinions
     

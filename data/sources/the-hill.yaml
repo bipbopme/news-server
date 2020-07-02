@@ -1,0 +1,29 @@
+id: the-hill
+name: The Hill
+description: The Hill is an American news website, based in Washington, D.C. which began as a newspaper publisher in 1994.[2][4] It is owned by Capitol Hill Publishing, which is owned by News Communications, Inc.
+url: https://thehill.com/
+iconUrl: https://logo.clearbit.com/thehill.com
+reliabilityUrl: https://www.adfontesmedia.com/the-hill-bias-and-reliability/
+reliability: 46.23
+bias: 0.09
+alexaRank: 1219
+country: us
+sections:
+  - name: News
+    categoryId: 2
+    url: https://thehill.com/
+  - name: Health
+    categoryId: 3
+    url: https://thehill.com/policy/healthcare
+  - name: Finance
+    categoryId: 4
+    url: https://thehill.com/policy/finance
+  - name: Science
+    categoryId: 6
+    url: https://thehill.com/policy/energy-environment
+  - name: Technology
+    categoryId: 7
+    url: https://thehill.com/policy/technology
+  - name: Opinion
+    categoryId: 12
+    url: https://thehill.com/opinion

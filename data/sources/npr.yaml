@@ -8,7 +8,27 @@ reliability: 49.90
 bias: -2.73
 alexaRank: 546
 country: us
+customUrlPattern: npr.org.*?/\d{4}/\d{2}/\d{2}/\d+/
 sections:
   - name: News
-    url: https://www.npr.org/sections/news/
     categoryId: 1
+    url: https://www.npr.org/sections/news/
+  - name: Politics
+    categoryId: 2
+    url: https://www.npr.org/sections/politics/
+  - name: Health
+    categoryId: 3
+    url: https://www.npr.org/sections/health/
+  - name: Business
+    categoryId: 4
+    url: https://www.npr.org/sections/business/
+  - name: Science
+    categoryId: 6
+    url: https://www.npr.org/sections/science/
+  - name: Technology
+    categoryId: 7
+    url: https://www.npr.org/sections/technology/
+  - name: Arts & Life
+    categoryId: 9
+    url: https://www.npr.org/sections/arts/
+

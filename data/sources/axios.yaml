@@ -1,0 +1,32 @@
+id: axios
+name: Axios
+description: Axios is a news website launched in 2017 by three journalists who believed a transformation was needed in online media. The motto of Axios is “Axios gets you smarter, faster on what matters.” Information is presented in very brief news articles on subjects such as technology, science, health, environment, politics and sports. Its website logs approximately 1.5 million visits per month. Ad Fontes Media rates Axios as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.axios.com/
+iconUrl: https://logo.clearbit.com/axios.com
+reliabilityUrl: https://www.adfontesmedia.com/axios-bias-and-reliability/
+reliability: 47.36 
+bias: -5.74
+alexaRank: 5575
+country: us
+sections:
+  - name: Home
+    categoryId: 1
+    url: https://www.axios.com/
+  - name: Politics & Policy
+    categoryId: 2
+    url: https://www.axios.com/politics-policy
+  - name: Health
+    categoryId: 3
+    url: https://www.axios.com/health
+  - name: Economy & Business
+    categoryId: 4
+    url: https://www.axios.com/economy-business
+  - name: Sports
+    categoryId: 5
+    url: https://www.axios.com/sports
+  - name: Science
+    categoryId: 6
+    url: https://www.axios.com/science
+  - name: Technology
+    categoryId: 7
+    url: https://www.axios.com/technology

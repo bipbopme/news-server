@@ -12,17 +12,20 @@ block content
         .description
           = source.description
         dl
-          dt Reliability
+          dt Reliability:
           dd= source.reliability
           dt Bias
           dd= source.bias
-          dt Alexa Rank
+          dt Alexa Rank:
           dd= source.alexaRank
+          if source.customUrlPattern
+            dt Custom Pattern:
+            dd= source.customUrlPattern
         h4 Sections
         table
           tr
             th Name
-            th Url
+            th URL
             th Category
           each section in source.sections
             tr

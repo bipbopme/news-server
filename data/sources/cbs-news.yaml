@@ -18,7 +18,7 @@ sections:
   - name: Health
     categoryId: 3
     url: https://www.cbsnews.com/health/
-  - name: Business
+  - name: Moneywatch
     categoryId: 4
     url: https://www.cbsnews.com/moneywatch/
   - name: Sports

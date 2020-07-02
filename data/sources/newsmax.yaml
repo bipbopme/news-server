@@ -11,5 +11,20 @@ useDesktop: true
 country: us
 sections:
   - name: Home
-    url: https://www.newsmax.com/
     categoryId: 1
+    url: https://www.newsmax.com/
+  - name: Politics
+    categoryId: 2
+    url: https://www.newsmax.com/politics/
+  - name: Health
+    categoryId: 3
+    url: https://www.newsmax.com/health/
+  - name: Business
+    categoryId: 4
+    url: https://www.newsmax.com/finance/
+  - name: Sci & Tech
+    categoryId: 6
+    url: https://www.newsmax.com/sciencetechnology/
+  - name: Opinion
+    categoryId: 12
+    url: https://www.newsmax.com/insiders/

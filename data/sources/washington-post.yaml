@@ -9,6 +9,36 @@ bias: -4.18
 alexaRank: 181
 country: us
 sections:
-  - name: Home Page
-    url: https://www.washingtonpost.com/
+  - name: Home
     categoryId: 1
+    url: https://www.washingtonpost.com/
+  - name: Politics
+    categoryId: 2
+    url: https://www.washingtonpost.com/politics/
+  - name: Health
+    categoryId: 3
+    url: https://www.washingtonpost.com/health/
+  - name: Business
+    categoryId: 4
+    url: https://www.washingtonpost.com/business/
+  - name: Sports
+    categoryId: 5
+    url: https://www.washingtonpost.com/sports/
+  - name: Science
+    categoryId: 6
+    url: https://www.washingtonpost.com/science/
+  - name: Tech
+    categoryId: 7
+    url: https://www.washingtonpost.com/business/technology/
+  - name: Arts & Entertainment
+    categoryId: 9
+    url: https://www.washingtonpost.com/entertainment/
+  - name: Travel
+    categoryId: 10
+    url: https://www.washingtonpost.com/lifestyle/travel/
+  - name: Food
+    categoryId: 11
+    url: https://www.washingtonpost.com/food/
+  - name: Opinion
+    categoryId: 12
+    url: https://www.washingtonpost.com/opinions

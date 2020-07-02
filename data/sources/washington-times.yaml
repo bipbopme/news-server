@@ -10,5 +10,29 @@ alexaRank: 6713
 country: us
 sections:
   - name: Home
-    url: https://www.washingtontimes.com/
     categoryId: 1
+    url: https://www.washingtontimes.com/
+  - name: Politics
+    categoryId: 2
+    url: https://www.washingtontimes.com/news/politics/
+  - name: Health
+    categoryId: 3
+    url: https://www.washingtontimes.com/culture/health/
+  - name: Business & Economy
+    categoryId: 4
+    url: https://www.washingtontimes.com/news/business-economy/
+  - name: Sports
+    categoryId: 5
+    url: https://www.washingtontimes.com/sports/
+  - name: Technology
+    categoryId: 7
+    url: https://www.washingtontimes.com/culture/technology/
+  - name: Entertainment
+    categoryId: 9
+    url: https://www.washingtontimes.com/culture/entertainment/
+  - name: Travel
+    categoryId: 10
+    url: https://www.washingtontimes.com/culture/travel/
+  - name: Opinion
+    categoryId: 12
+    url: https://www.washingtontimes.com/opinion/

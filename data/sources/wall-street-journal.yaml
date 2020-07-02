@@ -1,0 +1,44 @@
+id: wall-street-journal
+name: Wall Street Journal
+description: The Wall Street Journal is an international, business-focused daily newspaper based in New York City. It was founded in 1889 by Charles H. Dow primarily to cover business and financial news. The Journal has a circulation of 2.8 million and has won 37 Pulitzer Prizes. It is published by Dow Jones, a unit of News Corp. Ad Fontes Media rates The Wall Street Journal as neutral/balanced in terms of bias and as most reliable in terms of reliability.
+url: https://www.wsj.com/
+iconUrl: https://logo.clearbit.com/wsj.com
+reliabilityUrl: https://www.adfontesmedia.com/wall-street-journal-bias-and-reliability/
+reliability: 48.33
+bias: 1.89
+alexaRank: 436
+country: us
+sections:
+  - name: Home
+    categoryId: 1
+    url: https://www.wsj.com/
+  - name: Politics
+    categoryId: 2
+    url: https://www.wsj.com/news/politics
+  - name: Health & Wellness
+    categoryId: 3
+    url: https://www.wsj.com/news/life-arts/health-wellness
+  - name: Business
+    categoryId: 4
+    url: https://www.wsj.com/news/business
+  - name: Sports
+    categoryId: 5
+    url: https://www.wsj.com/news/life-arts/sports
+  - name: Science
+    categoryId: 6
+    url: https://www.wsj.com/news/science
+  - name: Technology
+    categoryId: 7
+    url: https://www.wsj.com/news/technology
+  - name: Fashion
+    categoryId: 8
+    url: https://www.wsj.com/news/life-arts/fashion
+  - name: Travel
+    categoryId: 10
+    url: https://www.wsj.com/news/life-arts/travel
+  - name: Food & Drink
+    categoryId: 11
+    url: https://www.wsj.com/news/life-arts/food-cooking-drink
+  - name: Opinion
+    categoryId: 12
+    url: https://www.wsj.com/news/opinion

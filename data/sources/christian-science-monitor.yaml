@@ -24,12 +24,12 @@ sections:
   - name: Technology
     categoryId: 7
     url: https://www.csmonitor.com/Technology
-  - name: Culture
+  - name: The Culture
     categoryId: 9
     url: https://www.csmonitor.com/The-Culture
   - name: Food
     categoryId: 11
     url: https://www.csmonitor.com/The-Culture/Food
-  - name: Opinion
+  - name: Commentary
     categoryId: 12
     url: https://www.csmonitor.com/Commentary

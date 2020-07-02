@@ -21,13 +21,13 @@ sections:
   - name: Sports
     categoryId: 5
     url: https://www.bbc.com/sport
-  - name: Science
+  - name: Science & Environment
     categoryId: 6
     url: https://www.bbc.com/news/science_and_environment
   - name: Technology
     categoryId: 7
     url: https://www.bbc.com/news/technology
-  - name: Entertainment
+  - name: Entertainment & Arts
     categoryId: 9
     url: https://www.bbc.com/news/entertainment_and_arts
   - name: Travel
