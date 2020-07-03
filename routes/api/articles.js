@@ -2,7 +2,6 @@ import PromiseRouter from "express-promise-router";
 import _ from "lodash";
 import articlesDb from "../../db/articles.js";
 import batchesDb from "../../db/batches.js";
-import clusterMaker from "clusters";
 import { getBagOfWords } from "../../utils.js";
 import kmpp from "kmpp";
 import linksDb from "../../db/links.js";
