@@ -4,6 +4,7 @@ import articlesDb from "../../db/articles.js";
 import batchesDb from "../../db/batches.js";
 import clusterMaker from "clusters";
 import { getBagOfWords } from "../../utils.js";
+import kmpp from "kmpp";
 import linksDb from "../../db/links.js";
 import luxon from "luxon";
 import { mapTo } from "../../db/utils.js";
@@ -29,24 +30,28 @@ function prioritizeRequestedSources(linkGroups, sourceIds) {
   });
 }
 
-function getTopArticles(links, count = 5) {
+function getTopArticles(links, count = 10) {
   const bow = getBagOfWords(links);
+  const result = kmpp(bow, { k: count, norm: 2 });
+  const clusters = [];
 
-  clusterMaker.k(count);
-  clusterMaker.iterations(500);
-  clusterMaker.data(bow);
-  const clusters = clusterMaker.clusters();
+  console.log(result.converged, result.iterations);
+
+  result.assignments.forEach((a, i) => {
+    clusters[a] = clusters[a] || [];
+
+    clusters[a].push(links[i]);
+  });
+
   const articles = [];
 
   clusters.forEach((c) => {
     console.log("-- cluster");
 
-    articles.push(links[bow.indexOf(c.points[0])].article);
+    articles.push(c[0].article);
 
-    c.points.forEach((p) => {
-      const point = links[bow.indexOf(p)];
-
-      console.debug(point.position, point.article.title);
+    c.forEach((l) => {
+      console.log(l.position, l.article.title);
     });
   });
 
@@ -65,7 +70,7 @@ router.get("/", async (req, res) => {
 
   const links = _.flatten(linkGroups);
   const articleIds = _.map(links, "articleId");
-  const articles = await articlesDb.getByIds(articleIds)
+  const articles = await articlesDb.getByIds(articleIds);
 
   res.json(articles);
 });
@@ -94,7 +99,7 @@ router.get("/top", async (req, res) => {
 
   const articles = getTopArticles(links);
 
-  res.json(links);
+  res.json(articles);
 });
 
 export default router;

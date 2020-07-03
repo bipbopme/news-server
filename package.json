@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.8.0",
-    "clusters": "^0.0.4",
     "express": "^4.17.1",
     "express-promise-router": "^4.0.1",
     "isomorphic-unfetch": "^3.0.0",
