@@ -47,12 +47,17 @@ export async function get(categoryIds, sourceIds, size = 100) {
           filter: [
             {
               terms: {
-                "categoryIds": categoryIds
+                categoryIds: categoryIds
               }
             },
             {
               terms: {
                 "sourceId.keyword": sourceIds
+              }
+            },
+            {
+              exists: {
+                field: "imageUrl"
               }
             }
           ]

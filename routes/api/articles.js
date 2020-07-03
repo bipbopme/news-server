@@ -3,57 +3,67 @@ import _ from "lodash";
 import articlesDb from "../../db/articles.js";
 import batchesDb from "../../db/batches.js";
 import clusterMaker from "clusters";
-import { getBagOfWords } from "../../utils.js";
 import { indexBy } from "../../db/utils.js";
 import kmpp from "kmpp";
 import linksDb from "../../db/links.js";
 import luxon from "luxon";
+import natural from "natural";
 import sourcesDb from "../../db/sources.js";
 
 const { DateTime } = luxon;
 const router = PromiseRouter();
 
-function prioritizeRequestedSources(linkGroups, sourceIds) {
-  return linkGroups.map((g) => {
-    return g.sort((a, b) => {
-      const aIsRequestSource = _.includes(sourceIds, a.sourceId);
-      const bIsRequestSource = _.includes(sourceIds, b.sourceId);
-
-      if (aIsRequestSource && bIsRequestSource) {
-        return 0;
-      } else if (aIsRequestSource) {
-        return -1;
-      } else {
-        return 1;
-      }
-    });
-  });
+function tokenizeAndStem(text) {
+  return natural.LancasterStemmer.tokenizeAndStem(text);
 }
 
-function getTopArticles(links, limit = 10) {
-  const bow = getBagOfWords(links);
+function getDict(texts) {
+  let words = [];
 
-  // const result = kmpp(bow, { k: limit, norm: 2 });
-  // let linkClusters = [];
+  texts.forEach((t) => (words = _.union(words, t)));
 
-  // result.assignments.forEach((a, i) => {
-  //   linkClusters[a] = linkClusters[a] || [];
-  //   linkClusters[a].push(links[i]);
-  // });
+  return words;
+}
 
-  clusterMaker.k(limit);
-  clusterMaker.iterations(100);
-  clusterMaker.data(bow);
-  const clusters = clusterMaker.clusters();
-  let linkClusters = clusters.map((c) => c.points.map((p) => links[bow.indexOf(p)]));
+function getBow(text, dict) {
+  const bow = [];
+
+  dict.forEach((d) => bow.push(_.includes(text, d) ? 1 : 0));
+
+  return bow;
+}
+
+function getTopArticlesTwo(links, limit = 10) {
+  const titles = links.map((l) => tokenizeAndStem(l.article.title));
+  const dict = getDict(titles);
+  const bow = titles.map((t) => getBow(t, dict));
+
+  console.log(dict);
+
+  const result = kmpp(bow, { k: limit, norm: 2 });
+  let linkClusters = [];
+  result.assignments.forEach((a, i) => {
+    linkClusters[a] = linkClusters[a] || [];
+    linkClusters[a].push(links[i]);
+  });
+
+  // clusterMaker.k(limit);
+  // clusterMaker.iterations(100);
+  // clusterMaker.data(bow);
+  // const clusters = clusterMaker.clusters();
+  // let linkClusters = clusters.map((c) => c.points.map((p) => links[bow.indexOf(p)]));
 
   // Sort by the average position of the cluster
-  linkClusters = _.sortBy(linkClusters, (lc) => lc.map(l => l.position).reduce((a, b) => a + b, 0) / lc.length);
+  linkClusters = _.sortBy(
+    linkClusters,
+    (lc) =>
+      lc
+        .map((l) => l.position)
+        .slice(0, 2)
+        .reduce((a, b) => a + b, 0) / lc.length
+  );
 
-  // shuffle the last cluster
-  // linkClusters[linkClusters.length - 1] = _.shuffle(linkClusters[linkClusters.length - 1]);
-
-  // just for debugging
+  // Just for debugging
   linkClusters.forEach((lc) => {
     console.log("-- cluster");
     lc.forEach((l) => {
@@ -88,20 +98,18 @@ router.get("/top", async (req, res) => {
   const linkGroups = await linksDb.getGroupsBySourceIds(expandedSourceIds, batch.id, categoryId);
   const links = _.flatten(linkGroups);
   const articleIds = _.map(links, "articleId");
-  const termVectorsIndex = indexBy(await articlesDb.getTermVectorsByIds(articleIds), "id");
+  // const termVectorsIndex = indexBy(await articlesDb.getTermVectorsByIds(articleIds), "id");
   const articlesIndex = indexBy(await articlesDb.getByIds(articleIds), "id");
 
   links.forEach((l) => {
-    l.terms = termVectorsIndex[l.articleId].terms;
+    // l.terms = termVectorsIndex[l.articleId].terms;
     l.article = articlesIndex[l.articleId];
   });
 
-  const articles = getTopArticles(links, limit * 2).slice(0, limit);
-  
-
+  const articles = getTopArticlesTwo(links, limit).slice(0, limit);
   articlesDb.enhance(articles, sourcesIndex);
 
-  res.json(links);
+  res.json(articles);
 });
 
 export default router;
