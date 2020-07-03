@@ -37,12 +37,51 @@ export async function getByIds(ids, size = 1000) {
   return orderedArticles;
 }
 
+export async function get(categoryIds, sourceIds, size = 100) {
+  console.log(categoryIds, sourceIds);
+  return await search({
+    index: "articles",
+    body: {
+      query: {
+        bool: {
+          filter: [
+            {
+              terms: {
+                "categoryIds": categoryIds
+              }
+            },
+            {
+              terms: {
+                "sourceId.keyword": sourceIds
+              }
+            }
+          ]
+        }
+      },
+      _source: [
+        "id",
+        "sourceId",
+        "categoryIds",
+        "title",
+        "description",
+        "imageUrl",
+        "publishDate",
+        "url",
+        "ampUrl",
+        "firstSeenAt"
+      ],
+      size: size,
+      sort: [{ firstSeenAt: "desc" }]
+    }
+  });
+}
+
 async function getTermVectors(id) {
   const { body } = await es.termvectors({
     index: "articles",
     id: id,
     body: {
-      fields: ["title"],
+      fields: ["clusterText"],
       positions: false,
       offsets: false,
       field_statistics: false,
@@ -52,7 +91,7 @@ async function getTermVectors(id) {
     }
   });
 
-  return body.term_vectors?.title?.terms;
+  return body.term_vectors?.clusterText?.terms;
 }
 
 async function getTermVectorsByIds(ids) {
@@ -87,4 +126,4 @@ function enhance(articles, sourcesMap) {
   });
 }
 
-export default { getByIds, getTermVectorsByIds, enhance };
+export default { get, getByIds, getTermVectorsByIds, enhance };

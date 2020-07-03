@@ -259,6 +259,11 @@ clone-response@^1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
+clusters@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/clusters/-/clusters-0.0.4.tgz#f6d603139788b1443415fee42fe1d4ececea8379"
+  integrity sha1-9tYDE5eIsUQ0Ff7kL+HU7Ozqg3k=
+
 color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"

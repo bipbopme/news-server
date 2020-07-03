@@ -2,11 +2,12 @@ import PromiseRouter from "express-promise-router";
 import _ from "lodash";
 import articlesDb from "../../db/articles.js";
 import batchesDb from "../../db/batches.js";
+import clusterMaker from "clusters";
 import { getBagOfWords } from "../../utils.js";
+import { indexBy } from "../../db/utils.js";
 import kmpp from "kmpp";
 import linksDb from "../../db/links.js";
 import luxon from "luxon";
-import { mapTo } from "../../db/utils.js";
 import sourcesDb from "../../db/sources.js";
 
 const { DateTime } = luxon;
@@ -29,47 +30,49 @@ function prioritizeRequestedSources(linkGroups, sourceIds) {
   });
 }
 
-function getTopArticles(links, count = 10) {
+function getTopArticles(links, limit = 10) {
   const bow = getBagOfWords(links);
-  const result = kmpp(bow, { k: count, norm: 2 });
-  const clusters = [];
 
-  console.log(result.converged, result.iterations);
+  // const result = kmpp(bow, { k: limit, norm: 2 });
+  // let linkClusters = [];
 
-  result.assignments.forEach((a, i) => {
-    clusters[a] = clusters[a] || [];
+  // result.assignments.forEach((a, i) => {
+  //   linkClusters[a] = linkClusters[a] || [];
+  //   linkClusters[a].push(links[i]);
+  // });
 
-    clusters[a].push(links[i]);
-  });
+  clusterMaker.k(limit);
+  clusterMaker.iterations(100);
+  clusterMaker.data(bow);
+  const clusters = clusterMaker.clusters();
+  let linkClusters = clusters.map((c) => c.points.map((p) => links[bow.indexOf(p)]));
 
-  const articles = [];
+  // Sort by the average position of the cluster
+  linkClusters = _.sortBy(linkClusters, (lc) => lc.map(l => l.position).reduce((a, b) => a + b, 0) / lc.length);
 
-  clusters.forEach((c) => {
+  // shuffle the last cluster
+  // linkClusters[linkClusters.length - 1] = _.shuffle(linkClusters[linkClusters.length - 1]);
+
+  // just for debugging
+  linkClusters.forEach((lc) => {
     console.log("-- cluster");
-
-    articles.push(c[0].article);
-
-    c.forEach((l) => {
-      console.log(l.position, l.article.title);
+    lc.forEach((l) => {
+      console.debug(l.position, l.article.title);
     });
   });
 
-  return articles;
+  return linkClusters.map((lc) => lc[0].article);
 }
 
 router.get("/", async (req, res) => {
   const sourceIds = (req.query.sourceIds || "ap-news").split(",");
-  const categoryId = req.query.categoryId ? parseInt(req.query.categoryId) : 1;
+  const categoryIds = (req.query.categoryIds || "1").split(",").map((id) => parseInt(id));
 
-  const batch = await batchesDb.getLatest();
-  const linkGroups = prioritizeRequestedSources(
-    await linksDb.getGroupsBySourceIds(sourceIds, batch.id, categoryId),
-    sourceIds
-  );
+  const sourcesIndex = indexBy(await sourcesDb.get(), "id");
+  const expandedSourceIds = await sourcesDb.getRelatedIds(sourcesIndex, sourceIds);
+  const articles = await articlesDb.get(categoryIds, expandedSourceIds);
 
-  const links = _.flatten(linkGroups);
-  const articleIds = _.map(links, "articleId");
-  const articles = await articlesDb.getByIds(articleIds);
+  articlesDb.enhance(articles, sourcesIndex);
 
   res.json(articles);
 });
@@ -77,31 +80,28 @@ router.get("/", async (req, res) => {
 router.get("/top", async (req, res) => {
   const sourceIds = (req.query.sourceIds || "ap-news").split(",");
   const categoryId = req.query.categoryId ? parseInt(req.query.categoryId) : 1;
+  const limit = req.query.limit ? parseInt(req.query.limit) : 5;
 
+  const sourcesIndex = indexBy(await sourcesDb.get(), "id");
   const batch = await batchesDb.getLatest();
-  const expandedSourceIds = await sourcesDb.getRelatedIds(sourceIds);
-  const linkGroups = prioritizeRequestedSources(
-    await linksDb.getGroupsBySourceIds(expandedSourceIds, batch.id, categoryId),
-    sourceIds
-  );
-
+  const expandedSourceIds = await sourcesDb.getRelatedIds(sourcesIndex, sourceIds);
+  const linkGroups = await linksDb.getGroupsBySourceIds(expandedSourceIds, batch.id, categoryId);
   const links = _.flatten(linkGroups);
   const articleIds = _.map(links, "articleId");
-
-  const termVectorsMap = mapTo(await articlesDb.getTermVectorsByIds(articleIds), "id");
-  const articlesMap = mapTo(await articlesDb.getByIds(articleIds), "id");
+  const termVectorsIndex = indexBy(await articlesDb.getTermVectorsByIds(articleIds), "id");
+  const articlesIndex = indexBy(await articlesDb.getByIds(articleIds), "id");
 
   links.forEach((l) => {
-    l.terms = termVectorsMap[l.articleId].terms;
-    l.article = articlesMap[l.articleId];
+    l.terms = termVectorsIndex[l.articleId].terms;
+    l.article = articlesIndex[l.articleId];
   });
 
-  const articles = getTopArticles(links);
-  const sourcesMap = mapTo(await sourcesDb.get(), 'id');
+  const articles = getTopArticles(links, limit * 2).slice(0, limit);
+  
 
-  articlesDb.enhance(articles, sourcesMap);
+  articlesDb.enhance(articles, sourcesIndex);
 
-  res.json(articles);
+  res.json(links);
 });
 
 export default router;

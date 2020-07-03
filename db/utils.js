@@ -7,7 +7,7 @@ export async function search(doc) {
   return body.hits.hits.map((h) => h._source);
 }
 
-export function mapTo(items, attr) {
+export function indexBy(items, attr) {
   const mappedItems = {};
 
   items.forEach((i) => (mappedItems[i[attr]] = i));

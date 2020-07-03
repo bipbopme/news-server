@@ -1,6 +1,6 @@
 import _ from "lodash";
 import fs from "fs";
-import { mapTo } from "./utils.js";
+import { indexBy } from "./utils.js";
 import path from "path";
 import yaml from "js-yaml";
 
@@ -26,8 +26,8 @@ async function get() {
   return JSON.parse(await fs.promises.readFile(OUTPUT_PATH));
 }
 
-function getBiasSpread(sourcesMap, sourceIds) {
-  const biases = sourceIds.map((id) => sourcesMap[id].bias);
+function getBiasSpread(sourcesIndex, sourceIds) {
+  const biases = sourceIds.map((id) => sourcesIndex[id].bias);
 
   return {
     min: Math.min(...biases),
@@ -35,10 +35,10 @@ function getBiasSpread(sourcesMap, sourceIds) {
   };
 }
 
-function getExpandedBiasSpread(sourcesMap, sourceIds, expandBy = 10) {
+function getExpandedBiasSpread(sourcesIndex, sourceIds, expandBy = 10) {
   const MIN_LEFT_BIAS = -20;
   const MAX_RIGHT_BIAS = 20;
-  let { min, max } = getBiasSpread(sourcesMap, sourceIds);
+  let { min, max } = getBiasSpread(sourcesIndex, sourceIds);
 
   const padding = expandBy / 2;
   const paddedMin = min - padding >= MIN_LEFT_BIAS ? min - padding : min;
@@ -63,13 +63,11 @@ function getExpandedBiasSpread(sourcesMap, sourceIds, expandBy = 10) {
   return { min, max };
 }
 
-async function getRelatedIds(sourceIds, categoryId = 1, limit = 5, inclusive = true) {
-  const sources = await get();
-  const sourcesMap = mapTo(sources, "id");
-  const { min, max } = getExpandedBiasSpread(sourcesMap, sourceIds);
+async function getRelatedIds(sourcesIndex, sourceIds, categoryId = 1, limit = 5, inclusive = true) {
+  const { min, max } = getExpandedBiasSpread(sourcesIndex, sourceIds);
   let relatedSources = [];
 
-  sources.forEach((source) => {
+  Object.values(sourcesIndex).forEach((source) => {
     if (!source.bias) return;
 
     const section = source.sections.find((section) => section.categoryId == categoryId);
