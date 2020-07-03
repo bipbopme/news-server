@@ -1,3 +1,4 @@
+import ImgixClient from "imgix-core-js";
 import elasticsearch from "@elastic/elasticsearch";
 import { search } from "./utils.js";
 const es = new elasticsearch.Client({ node: "http://localhost:9200" });
@@ -59,7 +60,7 @@ async function getTermVectorsByIds(ids) {
 
   await Promise.all(
     ids.map(async (id) => {
-      const terms = await getTermVectors(id); 
+      const terms = await getTermVectors(id);
 
       termVectors.push({ id, terms });
     })
@@ -68,4 +69,22 @@ async function getTermVectorsByIds(ids) {
   return termVectors;
 }
 
-export default { getByIds, getTermVectorsByIds };
+function enhance(articles, sourcesMap) {
+  const imgix = new ImgixClient({
+    domain: process.env.IMGIX_DOMAIN,
+    secureURLToken: process.env.IMGIX_TOKEN
+  });
+
+  articles.forEach((a) => {
+    const source = sourcesMap[a.sourceId];
+
+    a.imageUrl = imgix.buildURL(a.imageUrl, { w: 500, h: 500 });
+
+    a.source = {
+      name: source.name,
+      iconUrl: imgix.buildURL(source.iconUrl, { w: 32, h: 32 })
+    };
+  });
+}
+
+export default { getByIds, getTermVectorsByIds, enhance };

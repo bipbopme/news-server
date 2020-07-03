@@ -1,10 +1,12 @@
 import articlesRouter from "./routes/api/articles.js";
 import debugBatchesRouter from "./routes/debug/batches.js";
 import debugSourcesRouter from "./routes/debug/sources.js";
+import dotenv from "dotenv";
 import express from "express";
 import { initCache } from "./utils.js";
 import sourcesRouter from "./routes/api/sources.js";
 
+dotenv.config();
 initCache();
 
 const app = express();

@@ -97,6 +97,9 @@ router.get("/top", async (req, res) => {
   });
 
   const articles = getTopArticles(links);
+  const sourcesMap = mapTo(await sourcesDb.get(), 'id');
+
+  articlesDb.enhance(articles, sourcesMap);
 
   res.json(articles);
 });

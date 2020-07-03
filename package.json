@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.8.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-promise-router": "^4.0.1",
+    "imgix-core-js": "^2.3.1",
     "isomorphic-unfetch": "^3.0.0",
     "js-yaml": "^3.14.0",
     "kmpp": "^0.1.21",
