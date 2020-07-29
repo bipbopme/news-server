@@ -1,10 +1,67 @@
 import ImgixClient from "imgix-core-js";
+import { search as elasticSearch } from "./utils.js";
 import elasticsearch from "@elastic/elasticsearch";
-import { search } from "./utils.js";
 const es = new elasticsearch.Client({ node: "http://localhost:9200" });
 
+export async function search(q, sourceIds, days = 7, size = 50) {
+  return await elasticSearch({
+    index: "articles",
+    body: {
+      query: {
+        function_score: {
+          functions: [
+            {
+              gauss: {
+                firstSeenAt: {
+                  origin: "now",
+                  scale: "30d",
+                  offset: "1d",
+                  decay: 0.5
+                }
+              }
+            }
+          ],
+          query: {
+            bool: {
+              must: [
+                {
+                  multi_match: {
+                    query: q,
+                    fields: ["title^3", "description^2", "text"]
+                  }
+                }
+              ],
+              filter: [
+                { range: { firstSeenAt: { gte: `now-${days}d` } } },
+                {
+                  terms: {
+                    "sourceId.keyword": sourceIds
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      _source: [
+        "id",
+        "sourceId",
+        "categoryIds",
+        "title",
+        "description",
+        "imageUrl",
+        "publishDate",
+        "url",
+        "ampUrl",
+        "firstSeenAt"
+      ],
+      size: size
+    }
+  });
+}
+
 export async function getByIds(ids, size = 1000) {
-  const articles = await search({
+  const articles = await elasticSearch({
     index: "articles",
     body: {
       query: {
@@ -38,8 +95,7 @@ export async function getByIds(ids, size = 1000) {
 }
 
 export async function get(categoryIds, sourceIds, size = 100) {
-  console.log(categoryIds, sourceIds);
-  return await search({
+  return await elasticSearch({
     index: "articles",
     body: {
       query: {
@@ -131,4 +187,4 @@ function enhance(articles, sourcesMap) {
   });
 }
 
-export default { get, getByIds, getTermVectorsByIds, enhance };
+export default { get, getByIds, getTermVectorsByIds, enhance, search };

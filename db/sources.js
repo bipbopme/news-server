@@ -4,6 +4,8 @@ import { indexBy } from "./utils.js";
 import path from "path";
 import yaml from "js-yaml";
 
+let cachedSources;
+
 const __dirname = path.resolve();
 const OUTPUT_PATH = path.join(__dirname, ".cache", "sources.json");
 
@@ -23,7 +25,11 @@ function cache() {
 }
 
 async function get() {
-  return JSON.parse(await fs.promises.readFile(OUTPUT_PATH));
+  if (!cachedSources) {
+    cachedSources = JSON.parse(await fs.promises.readFile(OUTPUT_PATH));
+  }
+
+  return cachedSources;
 }
 
 function getBiasSpread(sourcesIndex, sourceIds) {
@@ -48,12 +54,12 @@ function getExpandedBiasSpread(sourcesIndex, sourceIds, expandBy = 10) {
   if (min < 0 && max > 0) {
     min = paddedMin;
     max = paddedMax;
-  } 
+  }
   // pad partisan left more on the right
   else if (max < 0) {
     min = paddedMin;
     max = max + expandBy;
-  } 
+  }
   // pad partisan right more on the left
   else if (min > 0) {
     min = min - expandBy;
@@ -78,7 +84,7 @@ async function getRelatedIds(sourcesIndex, sourceIds, categoryId = 1, limit = 5,
   });
 
   // Sort by popularity
-  relatedSources = _.sortBy(relatedSources, 'alexaRank');
+  relatedSources = _.sortBy(relatedSources, "alexaRank");
 
   // Gather the ids
   let relatedSourceIds = relatedSources.map((s) => s.id);
