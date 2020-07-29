@@ -115,7 +115,7 @@ router.get("/top", async (req, res) => {
 router.get("/search", async (req, res) => {
   const sources = await sourcesDb.get();
   const sourcesIndex = indexBy(sources, "id");
-  const sourceIds = sources.filter((s) => s.reliability >= 24).map((s) => s.id);
+  const sourceIds = sources.filter((s) => s.reliability >= 32).map((s) => s.id);
 
   const articles = await articlesDb.search(req.query.q, sourceIds);
 
