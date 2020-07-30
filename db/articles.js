@@ -28,7 +28,9 @@ export async function search(q, sourceIds, days = 7, size = 25) {
                 {
                   multi_match: {
                     query: q,
-                    fields: ["title^2", "description"]
+                    fields: ["title^2", "description"],
+                    type: "best_fields",
+                    operator: "and"
                   }
                 }
               ],
