@@ -79,7 +79,7 @@ export async function getByIds(ids, size = 1000) {
         "publishDate",
         "url",
         "ampUrl",
-        "firstCrawledAt"
+        "firstSeenAt"
       ],
       size: size
     }
