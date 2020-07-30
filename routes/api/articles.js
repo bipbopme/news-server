@@ -117,7 +117,20 @@ router.get("/search", async (req, res) => {
   const sourcesIndex = indexBy(sources, "id");
   const sourceIds = sources.filter((s) => s.reliability >= 40).map((s) => s.id);
 
-  const articles = await articlesDb.search(req.query.q, sourceIds);
+  let articles = await articlesDb.search(req.query.q, sourceIds);
+
+  const titleNotAllowedChars = /[^a-z]/gi;
+
+  // Unique titles
+  articles = _.uniqWith(articles, (a, b) => {
+    return (
+      a.title?.toLowerCase().replace(titleNotAllowedChars, "") ===
+      b.title?.toLowerCase().replace(titleNotAllowedChars, "")
+    );
+  });
+
+  // Unique sources
+  articles = _.uniqBy(articles, "sourceId");
 
   articlesDb.enhance(articles, sourcesIndex);
 

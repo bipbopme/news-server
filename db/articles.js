@@ -3,10 +3,11 @@ import { search as elasticSearch } from "./utils.js";
 import elasticsearch from "@elastic/elasticsearch";
 const es = new elasticsearch.Client({ node: "http://localhost:9200" });
 
-export async function search(q, sourceIds, days = 7, size = 50) {
+export async function search(q, sourceIds, days = 7, size = 25) {
   return await elasticSearch({
     index: "articles",
     body: {
+      min_score: 10,
       query: {
         function_score: {
           functions: [
@@ -14,8 +15,8 @@ export async function search(q, sourceIds, days = 7, size = 50) {
               gauss: {
                 firstSeenAt: {
                   origin: "now",
-                  scale: "30d",
-                  offset: "1d",
+                  scale: `${days}d`,
+                  offset: "12h",
                   decay: 0.5
                 }
               }
@@ -27,7 +28,7 @@ export async function search(q, sourceIds, days = 7, size = 50) {
                 {
                   multi_match: {
                     query: q,
-                    fields: ["title^3", "description^2", "text"]
+                    fields: ["title^2", "description"]
                   }
                 }
               ],
@@ -36,6 +37,11 @@ export async function search(q, sourceIds, days = 7, size = 50) {
                 {
                   terms: {
                     "sourceId.keyword": sourceIds
+                  }
+                },
+                {
+                  exists: {
+                    field: "imageUrl"
                   }
                 }
               ]
