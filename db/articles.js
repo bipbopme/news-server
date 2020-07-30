@@ -7,7 +7,7 @@ export async function search(q, sourceIds, days = 7, size = 25) {
   return await elasticSearch({
     index: "articles",
     body: {
-      min_score: 10,
+      min_score: 5,
       query: {
         function_score: {
           functions: [
